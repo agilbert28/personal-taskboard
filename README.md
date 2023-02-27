@@ -1,2 +1,2 @@
 # personal-taskboard
-A currently Google Sheets-based conditionally-formatted personal task logger with hour recording.
+A currently Google Sheets-based conditionally-formatted personal task logger with minute and hour recording.
