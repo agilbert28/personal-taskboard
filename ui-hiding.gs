@@ -34,8 +34,8 @@ function lastWeek() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getSheets()[0];
 
-  currentDate = new Date();
-  startDate = new Date(currentDate.getFullYear(), 0, 1);
+  var currentDate = new Date();
+  var startDate = new Date(currentDate.getFullYear(), 0, 1);
   var days = Math.floor((currentDate - startDate) /
       (24 * 60 * 60 * 1000));
   
@@ -62,8 +62,8 @@ function season() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getSheets()[0];
 
-  currentDate = new Date();
-  startDate = new Date(currentDate.getFullYear(), 0, 1);
+  var currentDate = new Date();
+  var startDate = new Date(currentDate.getFullYear(), 0, 1);
   var days = Math.floor((currentDate - startDate) /
       (24 * 60 * 60 * 1000));
   
