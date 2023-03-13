@@ -5,11 +5,12 @@
 function onEdit() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var range = spreadsheet.getActiveRange();
+  range.setNumberFormat('0.#')
   var col = range.getColumn();
   var cell = range.getDisplayValue();
   var value = parseFloat(cell.match('^[0-9,\.]*'));
   Logger.log('Column: ' + col)
-  Logger.log('Display Value ' + cell)
+  Logger.log('Display Value: ' + cell)
   Logger.log('Value: ' + value);
   
   if (Number.isInteger((col-2.0)/3.0)) {
