@@ -5,7 +5,10 @@
 function onEdit() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var range = spreadsheet.getActiveRange();
-  range.setNumberFormat('0.#')
+  var row = range.getRow();
+  if (row > 3) {
+    range.setNumberFormat('0.#')
+  }
   var col = range.getColumn();
   var cell = range.getDisplayValue();
   var value = parseFloat(cell.match('^[0-9,\.]*'));
@@ -13,7 +16,7 @@ function onEdit() {
   Logger.log('Display Value: ' + cell)
   Logger.log('Value: ' + value);
   
-  if (Number.isInteger((col-2.0)/3.0)) {
+  if (Number.isInteger((col-2.0)/3.0) && row > 3) {
     if (cell.includes('m')) {
       value = parseInt(value);
       if (value == 1) {
