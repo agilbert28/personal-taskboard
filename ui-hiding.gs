@@ -16,7 +16,7 @@ function onOpen() {
  * Toggle Hides the Personal Row for Privacy.
  */
 function personalRow() {
-  var personalRow = 7;
+  var personalRow = 8;
 
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var sheet = spreadsheet.getSheets()[0];
