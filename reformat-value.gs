@@ -1,7 +1,7 @@
 /**
  * The event handler triggered when editing the spreadsheet.
  * Adds Minute-Logging Functionality to Personal Taskboard.
- */
+ **/
 function onEdit() {
   var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
   var range = spreadsheet.getActiveRange();
