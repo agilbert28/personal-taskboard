@@ -6,25 +6,10 @@
 function onOpen() {
   var ui = SpreadsheetApp.getUi();
   ui.createMenu('Toggle Hide')
-    .addItem('Personal Row', 'personalRow')
     .addItem('Last Week', 'lastWeek')
     .addItem('Season', 'season')
+    .addItem('Personal Row', 'personalRow')
     .addToUi();
-}
-
-/**
- * Toggle Hides the Personal Row for Privacy.
- */
-function personalRow() {
-  var personalRow = 8;
-
-  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = spreadsheet.getSheets()[0];
-  if (sheet.isRowHiddenByUser(personalRow)) {
-    sheet.showRows(personalRow);
-  } else {
-    sheet.hideRows(personalRow);
-  }
 }
 
 /**
@@ -35,13 +20,13 @@ function lastWeek() {
   var sheet = spreadsheet.getSheets()[0];
 
   var currentDate = new Date();
-  var startDate = new Date(currentDate.getFullYear(), 0, 1);
+  var startDate = new Date();
+  var startDate = sheet.getRange('C2').getValue();
   var days = Math.floor((currentDate - startDate) /
       (24 * 60 * 60 * 1000));
   
-  var weekNum = Math.ceil(days / 7);
-  var startNum = sheet.getRange('C1').getDisplayValue();
-  var col = 3 * (weekNum - startNum);
+  var weekNum = Math.floor(days / 7);
+  var col = 3 * weekNum;
 
   if (col > 0) {
     if (sheet.isColumnHiddenByUser(col)) {
@@ -63,13 +48,13 @@ function season() {
   var sheet = spreadsheet.getSheets()[0];
 
   var currentDate = new Date();
-  var startDate = new Date(currentDate.getFullYear(), 0, 1);
+  var startDate = new Date();
+  var startDate = sheet.getRange('C2').getValue();
   var days = Math.floor((currentDate - startDate) /
       (24 * 60 * 60 * 1000));
   
-  var weekNum = Math.ceil(days / 7);
-  var startNum = sheet.getRange('C1').getDisplayValue();
-  var col = 3 * (weekNum - startNum);
+  var weekNum = Math.floor(days / 7);
+  var col = 3 * weekNum;
   Logger.log(col);
 
   if (col > 0) {
@@ -79,5 +64,20 @@ function season() {
     } else {
       sheet.hideColumns(3, col);
     }
+  }
+}
+
+/**
+ * Toggle Hides the Personal Row for Privacy.
+ */
+function personalRow() {
+  var personalRow = 7;
+
+  var spreadsheet = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = spreadsheet.getSheets()[0];
+  if (sheet.isRowHiddenByUser(personalRow)) {
+    sheet.showRows(personalRow);
+  } else {
+    sheet.hideRows(personalRow);
   }
 }
